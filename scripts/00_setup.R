@@ -64,7 +64,7 @@
   # Closure timing: end of student intake
     closure_intake <- 1994
   # Closure timing: no more new graduates
-    closure_output <- 1999
+    closure_output <- 1998
   # Re-opening timing: Turku
     # Student intake begins
       opening_intake_turku <- 2004
