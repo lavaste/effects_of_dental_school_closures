@@ -1,33 +1,79 @@
 ---
 title: "The Effects of Supply on Medical Labor Markets"
 subtitle: "Evidence from Dental School Closures in Finland"
-author: "Mikko Herzig, Konsta Lavaste & Allan Seuri"
+author: 
+   - name: Mikko Herzig
+     affiliation: University of Turku, Finnish Institute for Health and Welfare Finnish Ministry of Finance
+   - name: Konsta Lavaste
+     affiliation: Finnish Institute for Health and Welfare
+   - name: Allan Seuri
+     affiliation: Tampere University, Ministry of Finance
 date: today
 date-format: long
-lang: en-GB
-format: html
-   code-fold: show
+lang: "en-US"
+format:
+   html:
+      keep_md: true
+      code-fold: show
+      toc: false
 editor: visual
 license: MIT
+keywords: ["labor supply", "universities", "dental schools", "healthcare", "physician", "earnings"]
 ---
 
-## Quarto
+## Preliminaries
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
-
-## Running Code
-
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+First, let's load the setup and functions into memory.
 
 ```{r}
-1 + 1
+#| label: preliminaries
+#| echo: true
+#| output: false
+
+# Load knitr
+  library(knitr)
+
+# Load here package for relative file paths
+  library(here)
+
+# Run setup script
+  source(here("scripts", "00_setup.R"))
+
+# Load functions
+  source(here("scripts", "00_functions.R"))
+
 ```
 
-You can add options to executable code like this
+## Map
+
+In this section we create map of Finland which includes:
+1. locations of dental schools
+2. commuting zones
 
 ```{r}
-#| echo: false
-2 * 2
+#| label: map
+#| echo: true
+#| output: true
+
+# Which year's commuting zones we want to use
+  commutingzones_year <- 2019
+
+# Run the script
+  source(here("scripts", "01_map.R"))
+
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
