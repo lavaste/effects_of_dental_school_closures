@@ -47,33 +47,43 @@ First, let's load the setup and functions into memory.
 ## Map
 
 In this section we create map of Finland which includes:
-1. locations of dental schools
-2. commuting zones
+
+1.  locations of dental schools
+2.  commuting zones
 
 ```{r}
 #| label: map
-#| echo: true
+#| echo: false
+#| message: false
+#| warning: false
 #| output: true
+#| results: false
 
-# Which year's commuting zones we want to use
-  commutingzones_year <- 2019
+# Which year's commuting zones we want to use (2013 is the earliest available)
+  commutingzones_year <- 2013
 
 # Run the script
   source(here("scripts", "01_map.R"))
 
 ```
 
+## Timeline
 
+In this section, we draw a graph which depicts the timeline of the closures and re-openings.
 
+```{r}
+#| label: timeline
+#| echo: false
+#| message: false
+#| warning: false
+#| output: true
+#| results: false
 
+# Which year we set as the first and the last year of the timeline
+  timeline_year_begin <- 1990
+  timeline_year_end <- 2020
 
+# Run the script
+  source(here("scripts", "02_timeline.R"))
 
-
-
-
-
-
-
-
-
-
+```

@@ -9,7 +9,7 @@
 <meta name="author" content="Mikko Herzig">
 <meta name="author" content="Konsta Lavaste">
 <meta name="author" content="Allan Seuri">
-<meta name="dcterms.date" content="2026-03-09">
+<meta name="dcterms.date" content="2026-03-10">
 <meta name="keywords" content="labor supply, universities, dental schools, healthcare, physician, earnings">
 
 <title>The Effects of Supply on Medical Labor Markets</title>
@@ -128,7 +128,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 9, 2026</p>
+      <p class="date">March 10, 2026</p>
     </div>
   </div>
   
@@ -164,6 +164,65 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Load functions</span></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">source</span>(<span class="fu">here</span>(<span class="st">"scripts"</span>, <span class="st">"00_functions.R"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
+</div>
+</section>
+<section id="map" class="level2">
+<h2 class="anchored" data-anchor-id="map">Map</h2>
+<p>In this section we create map of Finland which includes:</p>
+<ol type="1">
+<li>locations of dental schools</li>
+<li>commuting zones</li>
+</ol>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Requesting response from: http://geo.stat.fi/geoserver/wfs?service=WFS&amp;version=1.0.0&amp;request=getFeature&amp;typename=tilastointialueet%3Akunta1000k_2013</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Coercing CRS to epsg:3067 (ETRS89 / TM35FIN)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Data is licensed under: Attribution 4.0 International (CC BY 4.0)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Passing 4 addresses to the Nominatim single address geocoder</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Query completed in: 4.1 seconds</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="master_report_files/figure-html/map-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="timeline" class="level2">
+<h2 class="anchored" data-anchor-id="timeline">Timeline</h2>
+<p>In this section, we draw a graph which depicts the timeline of the closures and re-openings.</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 2 rows containing missing values or values outside the scale range
+(`geom_segment()`).
+Removed 2 rows containing missing values or values outside the scale range
+(`geom_segment()`).
+Removed 2 rows containing missing values or values outside the scale range
+(`geom_segment()`).
+Removed 2 rows containing missing values or values outside the scale range
+(`geom_segment()`).
+Removed 2 rows containing missing values or values outside the scale range
+(`geom_segment()`).
+Removed 2 rows containing missing values or values outside the scale range
+(`geom_segment()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="master_report_files/figure-html/timeline-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
 </div>
 </section>
 
