@@ -20,6 +20,8 @@
 
 # Clean up
   commuting_zones <- commuting_zones %>%
+    # Normalize geometry column name (called "geom" or "the_geom" depending on year)
+      rename(any_of(c(geom = "the_geom"))) %>%
     # Drop Åland islands (ID = 21)
       subset(maakunta_code != 21) %>%
     # Drop columns
@@ -49,14 +51,14 @@
     
   
 # Create a new data frame with dental school names
-  coordinates <- schools %>%
+  school_df <- schools %>%
     # From vector to data frame
       data.frame(school = ., stringsAsFactors = FALSE) %>%
     # Add country for better geocoding
       mutate(country = "Finland")
     
 # Geocode
-  coordinates <- tidygeocoder::geocode(coordinates,
+  coordinates <- tidygeocoder::geocode(school_df,
                                        city=school,
                                        country = country,
                                        method = "osm")      # osm = Open street maps
@@ -114,7 +116,7 @@
     rm(bbox)
 
 # Draw
-    ggplot(data = commuting_zones) +
+    map <- ggplot(data = commuting_zones) +
       # Draw the less-affected commuting zones with grey
         geom_sf(fill = c("grey88", "transparent"),
                 color = "transparent",
@@ -204,11 +206,14 @@
                          text_family = font
                          )
 
+# Print the map
+  print(map)
+    
 # Save    
-  ggsave(here("output", tag, "map_dental_schools.pdf"), width = 130, height = 170, units = "mm", device="pdf", dpi=300)
+  ggsave(here("output", tag, "map_dental_schools.pdf"), map, width = 130, height = 170, units = "mm", device="pdf", dpi=300)
 
 # Drop temporary tables
-  rm(commuting_zones, coordinates, xmin, xmax, ymin, ymax)
+  rm(commuting_zones, coordinates, xmin, xmax, ymin, ymax, map)
 
       
       
