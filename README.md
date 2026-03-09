@@ -12,6 +12,10 @@ The scripts of this repository are described below.
 
 Description to be added.
 
+### Graph visualising the timeline of dental school closures and re-openings
+
+Description to be added.
+
 ### Graph depicting the evolution of dental student intake by dental schools over time
 
 Description to be added.
