@@ -4,30 +4,47 @@
 
 **Description**: This repository includes scripts for the research paper, which studies the effects of dental school closures in Finland. Most of the analysis is performed with confidential data and within Statistics Finland's remote system Fiona and, hence, the scripts are not stored in this public repository. Instead, this repository includes scripts that create graphs, maps, and tables which are based on open source data. Essentially this means information on institutional details and descriptive evidence of the effects with [Sotkanet](https://sotkanet.fi/sotkanet/en/index?) data.
 
-## Scripts
+## Repository structure
 
-The scripts of this repository are described below.
+**Main file**: The figures are produced running quarto file "master_report.qmd" from the main folder.
 
-### Map of Finland with dental school locations and commuting zones
+**Scripts**: Master report calls for R scripts which are stored in "scripts" folder.
 
-Description to be added.
+## Output
 
-### Graph visualising the timeline of dental school closures and re-openings
+The quarto file produces:
 
-Description to be added.
+- html report ("master_report.html") with all the figures.
+- Figures as standalone pdf's in folder called "output". For version control's sake, the output folder has subfolders named after the run date and username.
 
-### Graph depicting the evolution of dental student intake by dental schools over time
+Raw and processed data are saved in "data" folder in which the subfolders are also named after the run date and username.
 
-Description to be added.
+### 1) Map of Finland with dental school locations and commuting zones
 
-### Graph depicting unemployed dentists and dentist vacancies over time
+**Script**: *scripts/01_map.R*
 
-Description to be added.
+**Based on**: Spatial data from Statistics Finland and coordinates of cities from Open Street Maps.
 
-### Graph depicting use of dental care services in different sectors (public/private)
+### 2) Graph visualising the timeline of dental school closures and re-openings
 
-Description to be added.
+**Script**: *scripts/02_timeline.R*
 
-### Graph depicting local government dental care expenditures and dentist shortage
+**Based on**: Closure and re-opening years from open sources.
 
-Description to be added.
+### 3) Graph depicting the evolution of dental student intake by dental schools over time
+
+**Script**: *scripts/03_student_intake.R*
+
+**Based on**: Dental school student intake statistics from the Finnish Medical Association.
+
+### 4) Graph depicting unemployed dentists and dentist vacancies over time
+
+**Script**: *scripts/04_unemployment.R*
+
+### 5) Graph depicting use of dental care services in different sectors (public/private)
+
+**Script**: *scripts/05_expenditures_and_use.R*
+
+### 6) Graph depicting local government dental care expenditures and dentist shortage
+
+**Script**: *scripts/05_expenditures_and_use.R*
