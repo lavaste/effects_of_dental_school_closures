@@ -128,9 +128,9 @@
 
 # Remove temporary frames
   rm(school_df, list = ls()[startsWith(ls(), "timeline") | endsWith(ls(), "_map")])
+  gc()
 
 
 ############################################
 
-  
-  
+

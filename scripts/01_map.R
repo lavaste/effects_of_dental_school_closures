@@ -214,12 +214,12 @@
 
 # Drop temporary tables
   rm(commuting_zones, coordinates, xmin, xmax, ymin, ymax, map)
+  gc()
 
-      
-      
-      
+
+
 ############################################
  
-      
-      
-  
+
+
+
