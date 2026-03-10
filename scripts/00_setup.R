@@ -11,17 +11,16 @@
   gc()
 
 #Packages
-  # Maps
+  # Retrieve spatial data from Statistics Finland
     library(geofi)
-  # Scale bar
-    library(ggspatial)
-  # Retrieve data from Statistics Finland
+  # Retrieve other data from Statistics Finland
     library(pxweb)
-  # Retreive data from Finnish Institute for Health and Welfare
+  # Retrieve data from Finnish Institute for Health and Welfare
     library(sotkanet)
   # Data manipulation
     library(tidyverse)
     library(janitor)
+    library(data.table)
   # Spatial data
     library(sp)
     library(sf)
@@ -40,10 +39,11 @@
     library(ggspatial)
   # Fonts
     library(extrafont)
-      #extrafont::font_install("fontcm")
+      #extrafont::font_install("fontcm")    # Install Computer Modern font
       extrafont::loadfonts(quiet = TRUE)
-    library(fontcm)
-    library(showtext)
+  # Data scraping
+    library(pdftools)
+    library(stringr)
 
 # Set seed
   set.seed(12345)
@@ -78,4 +78,10 @@
   
 # Set uniform font family
   font <- "CM Roman"
+  
+# Uniform color scheme
+  colors <- c("Helsinki" = "black",
+              "Turku" = "gray30",
+              "Oulu" = "gray50",
+              "Kuopio" = "gray70")
 
