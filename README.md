@@ -6,45 +6,48 @@
 
 ## Repository structure
 
-**Main file**: The figures are produced running quarto file "master_report.qmd" from the main folder.
+**Main file**: The figures are produced running quarto file `master_report.qmd` from the main folder.
 
-**Scripts**: Master report calls for R scripts which are stored in "scripts" folder.
+**Scripts**: Master report calls for R scripts which are stored in `scripts` folder.
 
 ## Output
 
 The quarto file produces:
 
-- html report ("master_report.html") with all the figures.
-- Figures as standalone pdf's in folder called "output". For version control's sake, the output folder has subfolders named after the run date and username.
+- html report (`master_report.html`) with all the figures.
+- Figures as standalone pdf's in folder called `output`. For version control's sake, the output folder has subfolders named after the run date and username.
 
-Raw and processed data are saved in "data" folder in which the subfolders are also named after the run date and username.
+Raw and processed data are saved in `data` folder in which the subfolders are also named after the run date and username.
 
 ### 1) Map of Finland with dental school locations and commuting zones
 
-**Script**: *scripts/01_map.R*
+**Script**: `scripts/01_map.R`
 
-**Based on**: Spatial data from Statistics Finland and coordinates of cities from Open Street Maps.
+**Based on**: Spatial data from [Statistics Finland](https://stat.fi/en/services/statistical-data-services/geographic-data) and coordinates of cities from [OpenStreetMap](https://www.openstreetmap.org/).
 
 ### 2) Graph visualising the timeline of dental school closures and re-openings
 
-**Script**: *scripts/02_timeline.R*
+**Script**: `scripts/02_timeline.R`
 
-**Based on**: Closure and re-opening years from open sources.
+**Based on**: Closure and re-opening years from open sources
+
+ - [Kuopio: law change 379/1994](https://www.finlex.fi/fi/lainsaadanto/saadoskokoelma/1994/379)
+ - [Turku: ?](?)
 
 ### 3) Graph depicting the evolution of dental student intake by dental schools over time
 
-**Script**: *scripts/03_student_intake.R*
+**Script**: `scripts/03_student_intake.R`
 
-**Based on**: Dental school student intake statistics from the Finnish Medical Association.
+**Based on**: Dental school student intake statistics from the [Finnish Dental Association](https://www.hammaslaakariliitto.fi/sites/default/files/2025-03/Hammasl%C3%A4%C3%A4k%C3%A4rikoulutukseen%20haeneet%2C%20hyv%C3%A4ksytyt%20ja%20laillistetut%2C%20p%C3%A4ivitetty%204.3.2025.pdf) ([archived](https://web.archive.org/web/20260310073907/https://www.hammaslaakariliitto.fi/sites/default/files/2025-03/Hammasl%C3%A4%C3%A4k%C3%A4rikoulutukseen%20haeneet%2C%20hyv%C3%A4ksytyt%20ja%20laillistetut%2C%20p%C3%A4ivitetty%204.3.2025.pdf)).
 
 ### 4) Graph depicting unemployed dentists and dentist vacancies over time
 
-**Script**: *scripts/04_unemployment.R*
+**Script**: `scripts/04_unemployment.R`
 
 ### 5) Graph depicting use of dental care services in different sectors (public/private)
 
-**Script**: *scripts/05_expenditures_and_use.R*
+**Script**: `scripts/05_expenditures_and_use.R`
 
 ### 6) Graph depicting local government dental care expenditures and dentist shortage
 
-**Script**: *scripts/05_expenditures_and_use.R*
+**Script**: `scripts/05_expenditures_and_use.R`
