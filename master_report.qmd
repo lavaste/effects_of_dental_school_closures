@@ -87,3 +87,24 @@ In this section, we draw a graph which depicts the timeline of the closures and 
   source(here("scripts", "02_timeline.R"))
 
 ```
+
+## Student intake
+
+In this section, we draw a graph which shows how the dental student intake has evolved over the years by school.
+
+```{r}
+#| label: intake
+#| echo: false
+#| message: false
+#| warning: false
+#| output: true
+#| results: false
+
+# Which year we set as the first and the last year of the timeline
+  intake_year_begin <- 1990
+  intake_year_end <- 2020
+
+# Run the script
+  source(here("scripts", "03_student_intake.R"))
+
+```
