@@ -52,3 +52,9 @@ rsconnect/
 # Quarto files
 master_report_files/libs/
 master_report_files/figure_html/
+/.quarto/
+*_cache/
+
+# OS
+.DS_Store
+Thumbs.db
