@@ -50,4 +50,5 @@ po/*~
 rsconnect/
 
 # Quarto files
-master_report_files/
+master_report_files/libs/
+master_report_files/figure_html/
