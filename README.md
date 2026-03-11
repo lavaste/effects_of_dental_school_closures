@@ -31,8 +31,8 @@ Raw and processed data are saved in `data` folder in which the subfolders are al
 
 **Based on**: Closure and re-opening years from open sources
 
- - [Kuopio: law change 379/1994](https://www.finlex.fi/fi/lainsaadanto/saadoskokoelma/1994/379)
- - [Turku: ?](?)
+ - Kuopio: [law change 379/1994](https://www.finlex.fi/fi/lainsaadanto/saadoskokoelma/1994/379)
+ - Turku: [?](?)
 
 ### 3) Graph depicting the evolution of dental student intake by dental schools over time
 
@@ -44,10 +44,16 @@ Raw and processed data are saved in `data` folder in which the subfolders are al
 
 **Script**: `scripts/04_unemployment.R`
 
+**Based on**: 
+
 ### 5) Graph depicting use of dental care services in different sectors (public/private)
 
 **Script**: `scripts/05_expenditures_and_use.R`
 
+**Based on**: 
+
 ### 6) Graph depicting local government dental care expenditures and dentist shortage
 
 **Script**: `scripts/05_expenditures_and_use.R`
+
+**Based on**: 
