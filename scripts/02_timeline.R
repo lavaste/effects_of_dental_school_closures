@@ -121,10 +121,14 @@
       scale_color_manual(values = c("#474f58","#8fd175","#d18975"),name = NULL)
 
 # Print the graph
-  print(timeline_graph)
+  suppressWarnings({
+    print(timeline_graph)
+  })
   
 # Save the graph
-  ggsave(here("output", tag, "timeline.pdf"), timeline_graph, width = 300, height = 120, units = "mm", device="pdf", dpi=300)
+  suppressWarnings({
+    ggsave(here("output", tag, "timeline.pdf"), timeline_graph, width = 300, height = 120, units = "mm", device="pdf", dpi=300)
+  })
 
 # Remove temporary frames
   rm(school_df, list = ls()[startsWith(ls(), "timeline") | endsWith(ls(), "_map")])

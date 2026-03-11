@@ -1,18 +1,15 @@
-# The Effects of Supply on Medical Labor Markets
-Mikko Herzig, Konsta Lavaste, Allan Seuri
-March 11, 2026
+# The Effects of Supply on Medical Labor Markets: Evidence from Dental
+School Closures in Finland
+Mikko Herzig (University of Turku), Konsta Lavaste (Finnish Institute
+for Health and Welfare), Allan Seuri (University of Tampere)
+
+Version: 2026-03-11
 
 ## Preliminaries
 
 First, let’s load the setup and functions into memory.
 
-<details open class="code-fold">
-<summary>Code</summary>
-
 ``` r
-# Load knitr
-  library(knitr)
-
 # Load here package for relative file paths
   library(here)
 
@@ -23,7 +20,9 @@ First, let’s load the setup and functions into memory.
   source(here("scripts", "00_functions.R"))
 ```
 
-</details>
+Second, let’s check which version of R we are using.
+
+R version: 4.5.2
 
 ## Map
 
@@ -32,7 +31,13 @@ In this section we create map of Finland which includes:
 1.  locations of dental schools
 2.  commuting zones
 
-<!-- -->
+``` r
+# Which year's commuting zones we want to use (2013 is the earliest available)
+  commutingzones_year <- 2013
+
+# Run the script
+  source(here("scripts", "01_map.R"))
+```
 
     Requesting response from: http://geo.stat.fi/geoserver/wfs?service=WFS&version=1.0.0&request=getFeature&typename=tilastointialueet%3Akunta1000k_2013
 
@@ -51,18 +56,14 @@ In this section we create map of Finland which includes:
 In this section, we draw a graph which depicts the timeline of the
 closures and re-openings.
 
-    Warning: Removed 2 rows containing missing values or values outside the scale range
-    (`geom_segment()`).
-    Removed 2 rows containing missing values or values outside the scale range
-    (`geom_segment()`).
-    Removed 2 rows containing missing values or values outside the scale range
-    (`geom_segment()`).
-    Removed 2 rows containing missing values or values outside the scale range
-    (`geom_segment()`).
-    Removed 2 rows containing missing values or values outside the scale range
-    (`geom_segment()`).
-    Removed 2 rows containing missing values or values outside the scale range
-    (`geom_segment()`).
+``` r
+# Which year we set as the first and the last year of the timeline
+  timeline_year_begin <- 1990
+  timeline_year_end <- 2020
+
+# Run the script
+  source(here("scripts", "02_timeline.R"))
+```
 
 ![](master_report_files/figure-commonmark/timeline-1.png)
 
@@ -70,5 +71,14 @@ closures and re-openings.
 
 In this section, we draw a graph which shows how the dental student
 intake has evolved over the years by school.
+
+``` r
+# Which year we set as the first and the last year of the timeline
+  intake_year_begin <- 1990
+  intake_year_end <- 2020
+
+# Run the script
+  source(here("scripts", "03_student_intake.R"))
+```
 
 ![](master_report_files/figure-commonmark/intake-1.png)

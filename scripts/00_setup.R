@@ -10,6 +10,9 @@
   rm(list=ls())
   gc()
 
+# Set encoding
+  Sys.setlocale(locale = "UTF-8")
+
 #Packages
   # Retrieve spatial data from Statistics Finland
     library(geofi)

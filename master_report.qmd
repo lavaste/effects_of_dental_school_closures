@@ -1,25 +1,14 @@
 ---
 title: "The Effects of Supply on Medical Labor Markets"
-subtitle: "Evidence from Dental School Closures in Finland"
 author: 
-   - name: Mikko Herzig
-     affiliation: University of Turku, Finnish Institute for Health and Welfare Finnish Ministry of Finance
-   - name: Konsta Lavaste
-     affiliation: Finnish Institute for Health and Welfare
-   - name: Allan Seuri
-     affiliation: Tampere University, Ministry of Finance
-date: today
-date-format: long
-lang: "en-US"
-format:
-   gfm:
-      keep_md: true
-      code-fold: show
-      toc: false
+   - Mikko Herzig (University of Turku)
+   - Konsta Lavaste (Finnish Institute for Health and Welfare)
+   - Allan Seuri (University of Tampere)
+format: gfm
 editor: visual
-license: MIT
-keywords: ["labor supply", "universities", "dental schools", "healthcare", "physician", "earnings"]
 ---
+
+Version: `r format(Sys.Date(), "%Y-%m-%d")`
 
 ## Preliminaries
 
@@ -29,9 +18,6 @@ First, let's load the setup and functions into memory.
 #| label: preliminaries
 #| echo: true
 #| output: false
-
-# Load knitr
-  library(knitr)
 
 # Load here package for relative file paths
   library(here)
@@ -44,6 +30,8 @@ First, let's load the setup and functions into memory.
 
 ```
 
+Second, let's check which version of R we are using: R version `r getRversion()`
+
 ## Map
 
 In this section we create map of Finland which includes:
@@ -53,7 +41,7 @@ In this section we create map of Finland which includes:
 
 ```{r}
 #| label: map
-#| echo: false
+#| echo: true
 #| message: false
 #| warning: false
 #| output: true
@@ -73,7 +61,7 @@ In this section, we draw a graph which depicts the timeline of the closures and 
 
 ```{r}
 #| label: timeline
-#| echo: false
+#| echo: true
 #| message: false
 #| warning: false
 #| output: true
@@ -94,7 +82,7 @@ In this section, we draw a graph which shows how the dental student intake has e
 
 ```{r}
 #| label: intake
-#| echo: false
+#| echo: true
 #| message: false
 #| warning: false
 #| output: true
@@ -108,3 +96,28 @@ In this section, we draw a graph which shows how the dental student intake has e
   source(here("scripts", "03_student_intake.R"))
 
 ```
+
+## Dentist unemployment and vacancies
+
+In this section, we draw a graph which shows how the dentist unemployment and the number of dentist vacancies has evolved over time.
+
+```{r}
+#| label: unemployment
+#| echo: true
+#| message: false
+#| warning: false
+#| output: true
+#| results: false
+
+# Which year we set as the first and the last year of the graph
+  unemployment_year_begin <- 1990
+  unemployment_year_end <- 2020
+
+# Run the script
+  source(here("scripts", "04_unemployment.R"))
+
+```
+
+## Dental care use and expenditures
+
+To be added.
