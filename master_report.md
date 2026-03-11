@@ -42,7 +42,7 @@ In this section we create map of Finland which includes:
 
     Passing 4 addresses to the Nominatim single address geocoder
 
-    Query completed in: 4.1 seconds
+    Query completed in: 4.2 seconds
 
 ![](master_report_files/figure-commonmark/map-1.png)
 

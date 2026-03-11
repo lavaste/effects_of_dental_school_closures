@@ -12,7 +12,7 @@ date: today
 date-format: long
 lang: "en-US"
 format:
-   html:
+   gfm:
       keep_md: true
       code-fold: show
       toc: false
