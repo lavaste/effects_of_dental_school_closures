@@ -11,6 +11,8 @@ bibliography: grateful-refs.bib
 
 Version: `r format(Sys.Date(), "%Y-%m-%d")`
 
+Ran by: `r ifelse(Sys.getenv("USERNAME") == "klod", "Konsta Lavaste", "Unknown")`
+
 ## Preliminaries
 
 Let's begin by loading the setup and custom functions into memory.
@@ -117,16 +119,24 @@ In this section, we draw a graph which shows how the dentist unemployment and th
 
 ```
 
-## Dental care use and expenditures
-
-To be added.
-
 ------------------------------------------------------------------------
 
 # Package bibliography
 
 ```{r}
+#| label: bibliography
 #| results: asis
 
-cite_packages(output = "table", out.dir = ".", cite.tidyverse = TRUE)
+# Create
+  bibliography <- cite_packages(output = "table",
+                out.dir = ".",
+                omit = NULL,
+                include.RStudio = FALSE,
+                cite.tidyverse = TRUE,
+                dependencies = FALSE,
+                pkgs = "Session"
+                )
+
+# Print
+  knitr::kable(bibliography)
 ```
