@@ -47,6 +47,8 @@
   # Data scraping
     library(pdftools)
     library(stringr)
+  # Package bibliography
+    library(grateful)
 
 # Set seed
   set.seed(12345)
