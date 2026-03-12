@@ -14,7 +14,7 @@
 
 The quarto file produces:
 
-- html report (`master_report.html`) with all the figures.
+- Markdown report (**`master_report.md`**) with all the figures.
 - Figures as standalone pdf's in folder called `output`. For version control's sake, the output folder has subfolders named after the run date and username.
 
 Raw and processed data are saved in `data` folder in which the subfolders are also named after the run date and username.
@@ -57,3 +57,12 @@ Raw and processed data are saved in `data` folder in which the subfolders are al
 **Script**: `scripts/05_expenditures_and_use.R`
 
 **Based on**: 
+
+## Replication:
+
+If you want to reproduce *exactly* the same graphs, you
+
+1. Clone the repository
+2. Install renv: `install.packages("renv")`
+3. Restrore the packages: `renv::restore()`
+4. Run the master script from `master_report.qmd`
