@@ -2,7 +2,7 @@
 
 **Authors**: Mikko Herzig, [Konsta Lavaste](https://github.com/lavaste) & Allan Seuri
 
-**Description**: This repository includes scripts for the research paper, which studies the effects of dental school closures in Finland. Most of the analysis is performed with confidential data and within Statistics Finland's remote system Fiona and, hence, the scripts are not stored in this public repository. Instead, this repository includes scripts that create graphs, maps, and tables which are based on open source data. Essentially this means information on institutional details and descriptive evidence of the effects with [Sotkanet](https://sotkanet.fi/sotkanet/en/index?) data.
+**Description**: This repository includes scripts for the research paper, which studies the effects of dental school closures in Finland. Most of the analysis is performed with confidential data and within Statistics Finland's remote access system Fiona and, hence, the scripts are not stored in this public repository. Instead, this repository includes scripts that create those graphs and maps which are based on open source data. Essentially this means information on institutional details.
 
 ## Repository structure
 
@@ -31,8 +31,8 @@ Raw and processed data are saved in `data` folder in which the subfolders are al
 
 **Based on**: Closure and re-opening years from open sources
 
- - Kuopio: [law change 379/1994](https://www.finlex.fi/fi/lainsaadanto/saadoskokoelma/1994/379)
- - Turku: [?](?)
+ - Kuopio: [government decree 488/1994](https://www.finlex.fi/fi/lainsaadanto/saadoskokoelma/1994/488), [law amendment 379/1994](https://www.finlex.fi/fi/lainsaadanto/saadoskokoelma/1994/379), [government proposal 323/1993](https://www.finlex.fi/fi/hallituksen-esitykset/1993/323)
+ - Turku: [government decree 488/1994](https://www.finlex.fi/fi/lainsaadanto/saadoskokoelma/1994/488)
 
 ### 3) Graph depicting the evolution of dental student intake by dental schools over time
 
@@ -44,7 +44,7 @@ Raw and processed data are saved in `data` folder in which the subfolders are al
 
 **Script**: `scripts/04_unemployment.R`
 
-**Based on**: 
+**Based on**: Unemployed jobseekers and vacancies by occupation from [Statistics Finland](https://pxdata.stat.fi/PxWeb/pxweb/en/StatFin/StatFin__tyonv/statfin_tyonv_pxt_12ti.px/)
 
 ## Replication:
 
