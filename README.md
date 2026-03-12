@@ -46,18 +46,6 @@ Raw and processed data are saved in `data` folder in which the subfolders are al
 
 **Based on**: 
 
-### 5) Graph depicting use of dental care services in different sectors (public/private)
-
-**Script**: `scripts/05_expenditures_and_use.R`
-
-**Based on**: 
-
-### 6) Graph depicting local government dental care expenditures and dentist shortage
-
-**Script**: `scripts/05_expenditures_and_use.R`
-
-**Based on**: 
-
 ## Replication:
 
 If you want to reproduce *exactly* the same graphs, you
