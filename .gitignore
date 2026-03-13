@@ -58,3 +58,6 @@ master_report_files/figure_html/
 # OS
 .DS_Store
 Thumbs.db
+
+# Shapefiles are not freely available so we can't publish them in the repo
+data/shapefiles/

@@ -9,34 +9,136 @@
 #----------------------------------------------------------
 # FIND COMMUTING ZONES
 #----------------------------------------------------------
-    
-    
 
-# Get data on commuting zones in 2019
-  commuting_zones <- suppressMessages(get_municipalities(year = commutingzones_year,
-                                                         scale = 1000)
-                                      )
+
+
+# Prior to 2000
+  if (commutingzones_year < 2000 ) {
+    stop("Not possible. Commuting zones and municipality shapefiles available from year 2000 onwards.")
+  }
+
+# 2000-2012:
+  if (commutingzones_year >= 2000 & commutingzones_year <= 2012 ) {
+
+    # Define the URL for municipality-commuting zone key
+      url <- paste0("https://api.stat.fi/classificationservice/open/api/classifications/v2/correspondenceTables/kunta_1_", commutingzones_year, "0101%23tyossakayntial_1_", commutingzones_year, "0101/maps?content=data&meta=min&lang=fi")
+
+    # Download the key
+      response <- GET(url)
+      key <- fromJSON(content(response, as = "text", encoding = "UTF-8"), flatten = TRUE)
+
+    # Clean up
+      key <- key %>%
+        # Extract municipality ID and commuting zone ID
+          mutate(
+            kunta = as.numeric(sub(".*/", "", sourceLocalId)),
+            tyossakayntial_code = as.numeric(sub(".*/", "", targetLocalId))
+          ) %>%
+        # Drop other columns
+          dplyr::select(kunta, tyossakayntial_code)
+
+    # Import the spatial data
+      year_suffix <- substr(commutingzones_year, 3, 4)
+      municipalities <- suppressMessages(
+                          st_read(here("data", "shapefiles", paste0("ku100_", commutingzones_year), paste0("ku100_", year_suffix, "_p.shp")),
+                                  quiet = TRUE)
+                          )
+      # Check visually
+        #ggplot(municipalities) + geom_sf()
+        
+    # Clean up
+      municipalities <- municipalities %>%
+      # Drop vars
+        dplyr::select(CODE, geometry) %>%
+      # Rename
+        rename(kunta = CODE) %>%
+        rename(geom = geometry)
+      # Drop Åland
+        aland_IDs <- c(478, 35, 318, 736, 76, 417, 62, 170, 941, 60, 43, 65, 438, 766, 771, 295)
+        municipalities <- municipalities %>%
+          filter(!kunta %in% aland_IDs)
+
+    # Download map of 2013 (first year without sea areas)
+      municipalities_2013 <- suppressMessages(get_municipalities(year = 2013,
+                                                                 scale = 1000)
+                                             )
+
+    #Create union of all municipalities in 2013
+      union_2013 <- st_union(municipalities_2013)
+
+    # Harmonize the coordinate systems
+      municipalities <- st_transform(municipalities, st_crs(union_2013))
+
+    #Keep only the intersection of the 2013 and the desired year, i.e. remove sea areas
+      municipalities_intersection <- st_intersection(municipalities, union_2013)
+      #Check visually
+        #ggplot(municipalities_intersection) + geom_sf()
+      
+    # Add the municipality-commuting zone key
+      commuting_zones <- left_join(municipalities_intersection, key, by = "kunta")
+
+    # Add indicators
+      commuting_zones <- commuting_zones %>%
+        # Indicator for areas outside commuting zones areas (ID=0)
+          mutate(outside_commutingzones = ifelse(tyossakayntial_code==0, 1, 0)) %>%
+        # Indicator for the municipalities where the closed schools located Kuopio (297) and Turku (853)
+          mutate(temp = ifelse(kunta == 297 |          # Kuopio municipal ID = 297
+                               kunta == 853,            # Turku municipal ID = 853
+                               1,
+                               0
+                               )
+          ) %>%
+        # Indicator for all municipalities which were located in the same commuting zones as Turku and Kuopio
+          group_by(tyossakayntial_code) %>%
+          mutate(kuopioturku = max(temp)) %>%
+          ungroup() %>%
+        # Drop the temporary column
+          dplyr::select(-temp)
+
+    # Remove temporary tables
+      rm(list = ls()[startsWith(ls(), "municipalities")], union_2013, url, key, response, aland_IDs, year_suffix)
+
+  }
+
+# 2013 or later
+  if (commutingzones_year >= 2013 ) {
+
+    # Download the data
+        commuting_zones <- suppressMessages(get_municipalities(year = commutingzones_year,
+                                                               scale = 1000)
+                                            )
+
+    # Save the raw data
+      save(commuting_zones, file = here("data", tag, "raw", "commuting_zones.RData"))
+    
+    # Clean up
+      commuting_zones <- commuting_zones %>%
+        # Normalize geometry column name (called "geom" or "the_geom" depending on year)
+          rename(any_of(c(geom = "the_geom"))) %>%
+        # Drop Åland islands (ID = 21)
+          subset(maakunta_code != 21) %>%
+        # Drop columns
+          dplyr::select(kunta, tyossakayntial_code, tyossakayntial_name_fi, geom)
+        
+    # Add indicators
+      commuting_zones <- commuting_zones %>%
+        # Indicator for areas outside commuting zones areas (ID=99)
+          mutate(outside_commutingzones = ifelse(tyossakayntial_code==99, 1, 0)) %>%
+        # Indicator for the municipalities where the closed schools located Kuopio (297) and Turku (853)
+          mutate(temp = ifelse(kunta == 297 |          # Kuopio municipal ID = 297
+                               kunta == 853,            # Turku municipal ID = 853
+                               1,
+                               0
+                               )
+          ) %>%
+        # Indicator for all municipalities which were located in the same commuting zones as Turku and Kuopio
+          group_by(tyossakayntial_code) %>%
+          mutate(kuopioturku = max(temp)) %>%
+          ungroup() %>%
+        # Drop the temporary column
+          dplyr::select(-temp)
   
-# Save the raw data
-  save(commuting_zones, file = here("data", tag, "raw", "commuting_zones.RData"))
-
-# Clean up
-  commuting_zones <- commuting_zones %>%
-    # Normalize geometry column name (called "geom" or "the_geom" depending on year)
-      rename(any_of(c(geom = "the_geom"))) %>%
-    # Drop Åland islands (ID = 21)
-      subset(maakunta_code != 21) %>%
-    # Drop columns
-      dplyr::select(kunta, tyossakayntial_code, tyossakayntial_name_fi, geom) %>%
-    # Indicator for areas outside commuting zones areas (ID=99)
-      mutate(outside_commutingzones = ifelse(tyossakayntial_code==99, 1, 0)) %>%
-    # Indicator for the commuting zones where the closed schools located Kuopio (20) and Turku (8)
-      mutate(kuopioturku = ifelse(tyossakayntial_code == 20 |  # Kuopio ID = 20
-                                    tyossakayntial_code == 8,  # Turku ID = 8
-                                  1,
-                                  0
-                                  )
-      )
+  }
     
 
     
@@ -215,10 +317,10 @@
   print(map)
     
 # Save    
-  ggsave(here("output", tag, "map_dental_schools.pdf"), map, width = 130, height = 170, units = "mm", device="pdf", dpi=300)
+  ggsave(here("output", tag, paste0("map_dental_schools_", commutingzones_year, ".pdf")), map, width = 130, height = 170, units = "mm", device="pdf", dpi=300)
 
 # Drop temporary tables
-  rm(commuting_zones, coordinates, xmin, xmax, ymin, ymax, map)
+  rm(commuting_zones, commutingzones_year, coordinates, xmin, xmax, ymin, ymax, map)
   gc()
 
 

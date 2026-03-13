@@ -16,6 +16,8 @@
 #Packages
   # Retrieve spatial data from Statistics Finland
     library(geofi)
+    library(httr)
+    library(jsonlite)
   # Retrieve other data from Statistics Finland
     library(pxweb)
   # Retrieve data from Finnish Institute for Health and Welfare
