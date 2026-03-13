@@ -15,7 +15,7 @@
 The quarto file produces:
 
 - Markdown report (`master_report.md`) with all the figures.
-- Figures as standalone pdf's in folder called `output`. For version control's sake, the output folder has subfolders named after the run date and username.
+- Figures as standalone pdfs in folder called `output`. For version control's sake, the output folder has subfolders named after the run date and username.
 
 Raw and processed data are saved in `data` folder in which the subfolders are also named after the run date and username.
 
@@ -46,11 +46,11 @@ Raw and processed data are saved in `data` folder in which the subfolders are al
 
 **Based on**: Unemployed jobseekers and vacancies by occupation from [Statistics Finland](https://pxdata.stat.fi/PxWeb/pxweb/en/StatFin/StatFin__tyonv/statfin_tyonv_pxt_12ti.px/)
 
-## Replication:
+## Replication
 
 If you want to reproduce *exactly* the same graphs, you
 
 1. Clone the repository
 2. Install renv: `install.packages("renv")`
-3. Restrore the packages: `renv::restore()`
+3. Restore the packages: `renv::restore()`
 4. Run the master script from `master_report.qmd`
