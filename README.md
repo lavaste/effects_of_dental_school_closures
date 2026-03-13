@@ -14,7 +14,7 @@
 
 The quarto file produces:
 
-- Markdown report (**`master_report.md`**) with all the figures.
+- Markdown report (`master_report.md`) with all the figures.
 - Figures as standalone pdf's in folder called `output`. For version control's sake, the output folder has subfolders named after the run date and username.
 
 Raw and processed data are saved in `data` folder in which the subfolders are also named after the run date and username.
@@ -40,9 +40,9 @@ Raw and processed data are saved in `data` folder in which the subfolders are al
 
 **Based on**: Dental school student intake statistics from the [Finnish Dental Association](https://www.hammaslaakariliitto.fi/sites/default/files/2025-03/Hammasl%C3%A4%C3%A4k%C3%A4rikoulutukseen%20haeneet%2C%20hyv%C3%A4ksytyt%20ja%20laillistetut%2C%20p%C3%A4ivitetty%204.3.2025.pdf) ([archived](https://web.archive.org/web/20260310073907/https://www.hammaslaakariliitto.fi/sites/default/files/2025-03/Hammasl%C3%A4%C3%A4k%C3%A4rikoulutukseen%20haeneet%2C%20hyv%C3%A4ksytyt%20ja%20laillistetut%2C%20p%C3%A4ivitetty%204.3.2025.pdf)).
 
-### 4) Graph depicting unemployed dentists and dentist vacancies over time
+### 4) Graph depicting dentist jobseekers and dentist vacancies over time
 
-**Script**: `scripts/04_unemployment.R`
+**Script**: `scripts/04_jobseekers_vacancies.R`
 
 **Based on**: Unemployed jobseekers and vacancies by occupation from [Statistics Finland](https://pxdata.stat.fi/PxWeb/pxweb/en/StatFin/StatFin__tyonv/statfin_tyonv_pxt_12ti.px/)
 
