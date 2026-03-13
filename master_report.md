@@ -4,7 +4,7 @@ for Health and Welfare), Allan Seuri (University of Tampere)
 
 Version: 2026-03-13
 
-Ran by: Konsta Lavaste
+Rendered by: Konsta Lavaste
 
 ## Preliminaries
 
@@ -75,19 +75,22 @@ intake has evolved over the years by school.
 <img src="master_report_files/figure-commonmark/intake-1.png"
 data-fig-align="center" />
 
-## Dentist unemployment and vacancies
+## Jobseekers and vacancies
 
-In this section, we draw a graph which shows how the dentist
-unemployment and the number of dentist vacancies has evolved over time.
+In this section, we draw a graph which shows how the number of dentist
+jobseekers and the number of dentist vacancies has evolved over time.
 
 ``` r
 # Which year we set as the first and the last year of the graph
-  unemployment_year_begin <- 1990
-  unemployment_year_end <- 2020
+  jobseekers_year_begin <- 2008
+  jobseekers_year_end <- 2020
 
 # Run the script
-  source(here("scripts", "04_unemployment.R"), echo = FALSE)
+  source(here("scripts", "04_jobseekers_vacancies.R"), echo = FALSE)
 ```
+
+<img src="master_report_files/figure-commonmark/jobseekers-1.png"
+data-fig-align="center" />
 
 ------------------------------------------------------------------------
 
@@ -96,13 +99,13 @@ unemployment and the number of dentist vacancies has evolved over time.
 ``` r
 # Create
   bibliography <- cite_packages(output = "table",
-                out.dir = ".",
-                omit = NULL,
-                include.RStudio = FALSE,
-                cite.tidyverse = TRUE,
-                dependencies = FALSE,
-                pkgs = "Session"
-                )
+                                out.dir = ".",
+                                omit = NULL,
+                                include.RStudio = FALSE,
+                                cite.tidyverse = TRUE,
+                                dependencies = FALSE,
+                                pkgs = "Session"
+                                )
 
 # Print
   knitr::kable(bibliography)
