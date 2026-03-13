@@ -2,7 +2,7 @@
 Mikko Herzig (University of Turku), Konsta Lavaste (Finnish Institute
 for Health and Welfare), Allan Seuri (University of Tampere)
 
-Version: 2026-03-13
+Version: 2026-03-14
 
 Rendered by: Konsta Lavaste
 
@@ -29,14 +29,17 @@ In this section we create map of Finland which includes:
 2.  commuting zones
 
 ``` r
-# Which year's commuting zones we want to use (2013 is the earliest available)
-  commutingzones_year <- 2013
+# Which year's commuting zones we want to use (2000 is the earliest available)
+  commutingzones_year <- 2000
 
 # Run the script
   source(here("scripts", "01_map.R"), echo = FALSE)
 ```
 
     Warning: Coercing CRS to epsg:3067 (ETRS89 / TM35FIN)
+
+    Warning: attribute variables are assumed to be spatially constant throughout
+    all geometries
 
 <img src="master_report_files/figure-commonmark/map-1.png"
 data-fig-align="center" />
