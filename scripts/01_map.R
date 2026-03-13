@@ -13,7 +13,9 @@
     
 
 # Get data on commuting zones in 2019
-  commuting_zones <- get_municipalities(year=commutingzones_year, scale=1000)
+  commuting_zones <- suppressMessages(get_municipalities(year = commutingzones_year,
+                                                         scale = 1000)
+                                      )
   
 # Save the raw data
   save(commuting_zones, file = here("data", tag, "raw", "commuting_zones.RData"))
@@ -58,21 +60,24 @@
       mutate(country = "Finland")
     
 # Geocode
-  coordinates <- tidygeocoder::geocode(school_df,
+  coordinates <- suppressMessages(tidygeocoder::geocode(school_df,
                                        city=school,
                                        country = country,
                                        method = "osm")      # osm = Open street maps
+                                 )
   
 # Save the raw data
   save(coordinates, file = here("data", tag, "raw", "coordinates.RData"))
     
 # Transform coordinates from WGS84 to ETRS-TM35FIN
-  coordinates <- coordinates %>% 
+  coordinates <- suppressWarnings(
+    coordinates %>% 
     st_as_sf(coords = c("long", "lat"), crs = 4326) %>%
     st_transform(crs = 3067) %>%
     mutate(easting = st_coordinates(.)[,1],
            northing = st_coordinates(.)[,2]) %>%
     st_drop_geometry()
+  )
   
 
   

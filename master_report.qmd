@@ -26,10 +26,10 @@ Let's begin by loading the setup and custom functions into memory.
   library(here)
 
 # Run setup script
-  source(here("scripts", "00_setup.R"))
+  source(here("scripts", "00_setup.R"), echo = FALSE)
 
 # Load functions
-  source(here("scripts", "00_functions.R"))
+  source(here("scripts", "00_functions.R"), echo = FALSE)
 
 ```
 
@@ -47,12 +47,15 @@ In this section we create map of Finland which includes:
 #| warning: false
 #| output: true
 #| results: false
+#| fig-width: 6
+#| fig-height: 8
+#| fig-align: center
 
 # Which year's commuting zones we want to use (2013 is the earliest available)
   commutingzones_year <- 2013
 
 # Run the script
-  source(here("scripts", "01_map.R"))
+  source(here("scripts", "01_map.R"), echo = FALSE)
 
 ```
 
@@ -67,13 +70,16 @@ In this section, we draw a graph which depicts the timeline of the closures and 
 #| warning: false
 #| output: true
 #| results: false
+#| fig-width: 10
+#| fig-height: 5
+#| fig-align: center
 
 # Which year we set as the first and the last year of the timeline
   timeline_year_begin <- 1990
   timeline_year_end <- 2020
 
 # Run the script
-  source(here("scripts", "02_timeline.R"))
+  source(here("scripts", "02_timeline.R"), echo = FALSE)
 
 ```
 
@@ -88,13 +94,16 @@ In this section, we draw a graph which shows how the dental student intake has e
 #| warning: false
 #| output: true
 #| results: false
+#| fig-width: 7
+#| fig-height: 5
+#| fig-align: center
 
 # Which year we set as the first and the last year of the timeline
   intake_year_begin <- 1990
   intake_year_end <- 2020
 
 # Run the script
-  source(here("scripts", "03_student_intake.R"))
+  source(here("scripts", "03_student_intake.R"), echo = FALSE)
 
 ```
 
@@ -109,13 +118,16 @@ In this section, we draw a graph which shows how the dentist unemployment and th
 #| warning: false
 #| output: true
 #| results: false
+#| fig-width: 7
+#| fig-height: 5
+#| fig-align: center
 
 # Which year we set as the first and the last year of the graph
   unemployment_year_begin <- 1990
   unemployment_year_end <- 2020
 
 # Run the script
-  source(here("scripts", "04_unemployment.R"))
+  source(here("scripts", "04_unemployment.R"), echo = FALSE)
 
 ```
 
@@ -139,4 +151,5 @@ In this section, we draw a graph which shows how the dentist unemployment and th
 
 # Print
   knitr::kable(bibliography)
+
 ```
