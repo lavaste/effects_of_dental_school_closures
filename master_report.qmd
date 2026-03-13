@@ -11,7 +11,7 @@ bibliography: grateful-refs.bib
 
 Version: `r format(Sys.Date(), "%Y-%m-%d")`
 
-Ran by: `r ifelse(Sys.getenv("USERNAME") == "klod", "Konsta Lavaste", "Unknown")`
+Rendered by: `r ifelse(Sys.getenv("USERNAME") == "klod", "Konsta Lavaste", "Unknown")`
 
 ## Preliminaries
 
@@ -107,12 +107,12 @@ In this section, we draw a graph which shows how the dental student intake has e
 
 ```
 
-## Dentist unemployment and vacancies
+## Jobseekers and vacancies
 
-In this section, we draw a graph which shows how the dentist unemployment and the number of dentist vacancies has evolved over time.
+In this section, we draw a graph which shows how the number of dentist jobseekers and the number of dentist vacancies has evolved over time.
 
 ```{r}
-#| label: unemployment
+#| label: jobseekers
 #| echo: true
 #| message: false
 #| warning: false
@@ -123,11 +123,11 @@ In this section, we draw a graph which shows how the dentist unemployment and th
 #| fig-align: center
 
 # Which year we set as the first and the last year of the graph
-  unemployment_year_begin <- 1990
-  unemployment_year_end <- 2020
+  jobseekers_year_begin <- 2008
+  jobseekers_year_end <- 2020
 
 # Run the script
-  source(here("scripts", "04_unemployment.R"), echo = FALSE)
+  source(here("scripts", "04_jobseekers_vacancies.R"), echo = FALSE)
 
 ```
 
@@ -141,13 +141,13 @@ In this section, we draw a graph which shows how the dentist unemployment and th
 
 # Create
   bibliography <- cite_packages(output = "table",
-                out.dir = ".",
-                omit = NULL,
-                include.RStudio = FALSE,
-                cite.tidyverse = TRUE,
-                dependencies = FALSE,
-                pkgs = "Session"
-                )
+                                out.dir = ".",
+                                omit = NULL,
+                                include.RStudio = FALSE,
+                                cite.tidyverse = TRUE,
+                                dependencies = FALSE,
+                                pkgs = "Session"
+                                )
 
 # Print
   knitr::kable(bibliography)
