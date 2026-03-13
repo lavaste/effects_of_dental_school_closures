@@ -118,7 +118,7 @@
             ) +
     # Custom colours
       guides(colour = guide_legend(reverse = TRUE, nrow = 1, byrow = TRUE)) +
-      scale_color_manual(values = c("#474f58","#8fd175","#d18975"),name = NULL)
+      scale_color_manual(values = c("black","gray80","gray40"),name = NULL)
 
 # Print the graph
   suppressWarnings({
