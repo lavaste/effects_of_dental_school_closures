@@ -2,7 +2,9 @@
 Mikko Herzig (University of Turku), Konsta Lavaste (Finnish Institute
 for Health and Welfare), Allan Seuri (University of Tampere)
 
-Version: 2026-03-12
+Version: 2026-03-13
+
+Ran by: Konsta Lavaste
 
 ## Preliminaries
 
@@ -13,10 +15,10 @@ Let’s begin by loading the setup and custom functions into memory.
   library(here)
 
 # Run setup script
-  source(here("scripts", "00_setup.R"))
+  source(here("scripts", "00_setup.R"), echo = FALSE)
 
 # Load functions
-  source(here("scripts", "00_functions.R"))
+  source(here("scripts", "00_functions.R"), echo = FALSE)
 ```
 
 ## Map
@@ -31,20 +33,13 @@ In this section we create map of Finland which includes:
   commutingzones_year <- 2013
 
 # Run the script
-  source(here("scripts", "01_map.R"))
+  source(here("scripts", "01_map.R"), echo = FALSE)
 ```
-
-    Requesting response from: http://geo.stat.fi/geoserver/wfs?service=WFS&version=1.0.0&request=getFeature&typename=tilastointialueet%3Akunta1000k_2013
 
     Warning: Coercing CRS to epsg:3067 (ETRS89 / TM35FIN)
 
-    Data is licensed under: Attribution 4.0 International (CC BY 4.0)
-
-    Passing 4 addresses to the Nominatim single address geocoder
-
-    Query completed in: 4.1 seconds
-
-![](master_report_files/figure-commonmark/map-1.png)
+<img src="master_report_files/figure-commonmark/map-1.png"
+data-fig-align="center" />
 
 ## Timeline
 
@@ -57,10 +52,11 @@ closures and re-openings.
   timeline_year_end <- 2020
 
 # Run the script
-  source(here("scripts", "02_timeline.R"))
+  source(here("scripts", "02_timeline.R"), echo = FALSE)
 ```
 
-![](master_report_files/figure-commonmark/timeline-1.png)
+<img src="master_report_files/figure-commonmark/timeline-1.png"
+data-fig-align="center" />
 
 ## Student intake
 
@@ -73,10 +69,11 @@ intake has evolved over the years by school.
   intake_year_end <- 2020
 
 # Run the script
-  source(here("scripts", "03_student_intake.R"))
+  source(here("scripts", "03_student_intake.R"), echo = FALSE)
 ```
 
-![](master_report_files/figure-commonmark/intake-1.png)
+<img src="master_report_files/figure-commonmark/intake-1.png"
+data-fig-align="center" />
 
 ## Dentist unemployment and vacancies
 
@@ -89,50 +86,54 @@ unemployment and the number of dentist vacancies has evolved over time.
   unemployment_year_end <- 2020
 
 # Run the script
-  source(here("scripts", "04_unemployment.R"))
+  source(here("scripts", "04_unemployment.R"), echo = FALSE)
 ```
-
-## Dental care use and expenditures
-
-To be added.
 
 ------------------------------------------------------------------------
 
 # Package bibliography
 
 ``` r
-cite_packages(output = "table", out.dir = ".", cite.tidyverse = TRUE)
+# Create
+  bibliography <- cite_packages(output = "table",
+                out.dir = ".",
+                omit = NULL,
+                include.RStudio = FALSE,
+                cite.tidyverse = TRUE,
+                dependencies = FALSE,
+                pkgs = "Session"
+                )
+
+# Print
+  knitr::kable(bibliography)
 ```
 
-        Package Version                                       Citation
-
-1 base 4.5.2 R Core Team (2025b) 2 Cairo 1.7.0 Urbanek and Horner (2025)
-3 data.table 1.17.8 Barrett et al. (2025) 4 extrafont 0.20 Chang (2025)
-5 foreign 0.8.90 R Core Team (2025a) 6 geofi 1.1.0 Kainu et al. (2025) 7
-ggnewscale 0.5.2 Campitelli (2025) 8 ggrepel 0.9.7 Slowikowski (2026) 9
-ggspatial 1.1.10 Dunnington (2025) 10 ggthemes 5.2.0 Arnold (2025) 11
-grid 4.5.2 R Core Team (2025c) 12 here 1.0.2 Müller (2025) 13 janitor
-2.2.1 Firke (2024) 14 pdftools 3.6.0 Ooms (2025) 15 pxweb 0.17.0
-Magnusson et al. (2019) 16 raster 3.6.32 Hijmans (2025) 17 renv 1.1.8
-Ushey and Wickham (2026) 18 rmarkdown 2.30 Xie, Allaire, and Grolemund
-(2018); Xie, Dervieux, and Riederer (2020); Allaire et al. (2025) 19
-scales 1.4.0 Wickham, Pedersen, and Seidel (2025) 20 sf 1.0.24 E.
-Pebesma (2018); E. Pebesma and Bivand (2023) 21 sotkanet 0.10.1 Lahti et
-al. (2024) 22 sp 2.2.0 E. J. Pebesma and Bivand (2005); Bivand, Pebesma,
-and Gomez-Rubio (2013) 23 tidygeocoder 1.0.6 Cambon et al. (2021) 24
-tidyverse 2.0.0 Wickham et al. (2019)
+| Package | Version | Citation |
+|:---|:---|:---|
+| base | 4.5.2 | R Core Team (2025) |
+| Cairo | 1.7.0 | Urbanek and Horner (2025) |
+| data.table | 1.18.2.1 | Barrett et al. (2026) |
+| extrafont | 0.20 | Chang (2025) |
+| foreign | 0.8.91 | R Core Team (2026) |
+| geofi | 1.2.0 | Kainu et al. (2026) |
+| ggnewscale | 0.5.2 | Campitelli (2025) |
+| ggrepel | 0.9.7 | Slowikowski (2026) |
+| ggspatial | 1.1.10 | Dunnington (2025) |
+| ggthemes | 5.2.0 | Arnold (2025) |
+| grateful | 0.3.0 | Rodriguez-Sanchez and Jackson (2025) |
+| here | 1.0.2 | Müller (2025) |
+| janitor | 2.2.1 | Firke (2024) |
+| pdftools | 3.7.0 | Ooms (2026) |
+| pxweb | 0.17.0 | Magnusson et al. (2019) |
+| raster | 3.6.32 | Hijmans (2025) |
+| sf | 1.1.0 | E. Pebesma (2018); E. Pebesma and Bivand (2023) |
+| sotkanet | 0.10.1 | Lahti et al. (2024) |
+| sp | 2.2.1 | E. J. Pebesma and Bivand (2005); Bivand, Pebesma, and Gomez-Rubio (2013) |
+| tidygeocoder | 1.0.6 | Cambon et al. (2021) |
+| tidyverse | 2.0.0 | Wickham et al. (2019) |
 
 <div id="refs" class="references csl-bib-body hanging-indent"
 entry-spacing="0">
-
-<div id="ref-rmarkdown2025" class="csl-entry">
-
-Allaire, JJ, Yihui Xie, Christophe Dervieux, Jonathan McPherson, Javier
-Luraschi, Kevin Ushey, Aron Atkins, et al. 2025.
-*<span class="nocase">rmarkdown</span>: Dynamic Documents for r*.
-<https://github.com/rstudio/rmarkdown>.
-
-</div>
 
 <div id="ref-ggthemes" class="csl-entry">
 
@@ -145,10 +146,9 @@ Themes, Scales and Geoms for “<span class="nocase">ggplot2</span>”*.
 <div id="ref-datatable" class="csl-entry">
 
 Barrett, Tyson, Matt Dowle, Arun Srinivasan, Jan Gorecki, Michael
-Chirico, Toby Hocking, Benjamin Schwendinger, and Ivan Krylov. 2025.
+Chirico, Toby Hocking, Benjamin Schwendinger, and Ivan Krylov. 2026.
 *<span class="nocase">data.table</span>: Extension of
-“<span class="nocase">data.frame</span>”*.
-<https://doi.org/10.32614/CRAN.package.data.table>.
+“<span class="nocase">data.frame</span>”*. <https://r-datatable.com>.
 
 </div>
 
@@ -212,9 +212,9 @@ Data Analysis and Modeling*.
 <div id="ref-geofi" class="csl-entry">
 
 Kainu, Markus, Joona Lehtomaki, Juuso Parkkinen, Jani Miettinen, Pyry
-Kantanen, Sampo Vesanen, and Leo Lahti. 2025.
+Kantanen, Sampo Vesanen, and Leo Lahti. 2026.
 *<span class="nocase">geofi: Access Finnish Geospatial Data</span>*
-(version 1.1.0). <https://doi.org/10.32614/CRAN.package.geofi>.
+(version 1.2.0). <https://doi.org/10.32614/CRAN.package.geofi>.
 
 </div>
 
@@ -237,15 +237,15 @@ Magnusson, Mans, Markus Kainu, Janne Huovari, and Leo Lahti. 2019.
 <div id="ref-here" class="csl-entry">
 
 Müller, Kirill. 2025. *<span class="nocase">here</span>: A Simpler Way
-to Find Your Files*. <https://doi.org/10.32614/CRAN.package.here>.
+to Find Your Files*. <https://here.r-lib.org/>.
 
 </div>
 
 <div id="ref-pdftools" class="csl-entry">
 
-Ooms, Jeroen. 2025. *<span class="nocase">pdftools</span>: Text
+Ooms, Jeroen. 2026. *<span class="nocase">pdftools</span>: Text
 Extraction, Rendering and Converting of PDF Documents*.
-<https://doi.org/10.32614/CRAN.package.pdftools>.
+<https://ropensci.r-universe.dev/pdftools>.
 
 </div>
 
@@ -273,28 +273,28 @@ Data Science: With applications in R</span>*. Chapman and Hall/CRC.
 
 </div>
 
-<div id="ref-foreign" class="csl-entry">
-
-R Core Team. 2025a. *<span class="nocase">foreign</span>: Read Data
-Stored by “Minitab,” “S,” “SAS,” “SPSS,” “Stata,” “Systat,” “Weka,”
-“<span class="nocase">dBase</span>,” ...*
-<https://doi.org/10.32614/CRAN.package.foreign>.
-
-</div>
-
 <div id="ref-base" class="csl-entry">
 
-———. 2025b. *R: A Language and Environment for Statistical Computing*.
-Vienna, Austria: R Foundation for Statistical Computing.
+R Core Team. 2025. *R: A Language and Environment for Statistical
+Computing*. Vienna, Austria: R Foundation for Statistical Computing.
 <https://www.R-project.org/>.
 
 </div>
 
-<div id="ref-grid" class="csl-entry">
+<div id="ref-foreign" class="csl-entry">
 
-———. 2025c. *R: A Language and Environment for Statistical Computing*.
-Vienna, Austria: R Foundation for Statistical Computing.
-<https://www.R-project.org/>.
+———. 2026. *<span class="nocase">foreign</span>: Read Data Stored by
+“Minitab,” “S,” “SAS,” “SPSS,” “Stata,” “Systat,” “Weka,”
+“<span class="nocase">dBase</span>,” ...*
+<https://svn.r-project.org/R-packages/trunk/foreign/>.
+
+</div>
+
+<div id="ref-grateful" class="csl-entry">
+
+Rodriguez-Sanchez, Francisco, and Connor P. Jackson. 2025.
+*<span class="nocase">grateful</span>: Facilitate Citation of R
+Packages*. <https://pakillo.github.io/grateful/>.
 
 </div>
 
@@ -316,44 +316,12 @@ Output*. <https://doi.org/10.32614/CRAN.package.Cairo>.
 
 </div>
 
-<div id="ref-renv" class="csl-entry">
-
-Ushey, Kevin, and Hadley Wickham. 2026.
-*<span class="nocase">renv</span>: Project Environments*.
-<https://doi.org/10.32614/CRAN.package.renv>.
-
-</div>
-
 <div id="ref-tidyverse" class="csl-entry">
 
 Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy
 D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019.
 “Welcome to the <span class="nocase">tidyverse</span>.” *Journal of Open
 Source Software* 4 (43): 1686. <https://doi.org/10.21105/joss.01686>.
-
-</div>
-
-<div id="ref-scales" class="csl-entry">
-
-Wickham, Hadley, Thomas Lin Pedersen, and Dana Seidel. 2025.
-*<span class="nocase">scales</span>: Scale Functions for Visualization*.
-<https://doi.org/10.32614/CRAN.package.scales>.
-
-</div>
-
-<div id="ref-rmarkdown2018" class="csl-entry">
-
-Xie, Yihui, J. J. Allaire, and Garrett Grolemund. 2018. *R Markdown: The
-Definitive Guide*. Boca Raton, Florida: Chapman; Hall/CRC.
-<https://bookdown.org/yihui/rmarkdown>.
-
-</div>
-
-<div id="ref-rmarkdown2020" class="csl-entry">
-
-Xie, Yihui, Christophe Dervieux, and Emily Riederer. 2020. *R Markdown
-Cookbook*. Boca Raton, Florida: Chapman; Hall/CRC.
-<https://bookdown.org/yihui/rmarkdown-cookbook>.
 
 </div>
 
