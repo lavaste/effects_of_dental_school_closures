@@ -164,7 +164,8 @@
                            ) +
         scale_x_continuous(limits = c(intake_year_begin, intake_year_end),
                            labels = seq(intake_year_begin, intake_year_end, by = 2),
-                           breaks = seq(intake_year_begin, intake_year_end, by = 2)
+                           breaks = seq(intake_year_begin, intake_year_end, by = 2),
+                           expand = expansion(add = .5)
                            ) +
       # Titles
         labs(y = "Persons")

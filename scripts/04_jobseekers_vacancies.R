@@ -81,7 +81,7 @@
                      limits = as.Date(c(paste0(jobseekers_year_begin, "-01-01"), paste0(jobseekers_year_end, "-12-01"))),
                      expand = c(0, 0)
                      ) +
-        labs(y = "Persons")
+        labs(y = "Number")
 
 # Print the graph
   print(jobseekers_vacancies_graph)

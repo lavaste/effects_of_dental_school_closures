@@ -51,8 +51,8 @@ In this section we create map of Finland which includes:
 #| fig-height: 8
 #| fig-align: center
 
-# Which year's commuting zones we want to use (2013 is the earliest available)
-  commutingzones_year <- 2013
+# Which year's commuting zones we want to use (2000 is the earliest available)
+  commutingzones_year <- 2000
 
 # Run the script
   source(here("scripts", "01_map.R"), echo = FALSE)
